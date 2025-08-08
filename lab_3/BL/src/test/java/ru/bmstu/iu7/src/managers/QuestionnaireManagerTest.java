@@ -11,6 +11,7 @@ import ru.bmstu.iu7.API.IReqCacheRepository;
 import ru.bmstu.iu7.API.model.*;
 import ru.bmstu.iu7.src.controllers.QuestionnaireController;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-class QuestionnaireManagerTest2 {
+class QuestionnaireManagerTest {
 
     @Mock
     IML_port iml_port;
@@ -29,6 +30,7 @@ class QuestionnaireManagerTest2 {
 
     @Test
     void create() throws Exception {
+
 
         AInformation info1 = new AInformation((long)0,
                 new ArrayList<AVariantAnswer>(Arrays.asList(

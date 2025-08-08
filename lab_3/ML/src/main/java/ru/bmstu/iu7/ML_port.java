@@ -2,6 +2,7 @@ package ru.bmstu.iu7;
 
 import ru.bmstu.iu7.API.IML_port;
 import ru.bmstu.iu7.API.model.ATag;
+import ru.bmstu.iu7.src.controllers.QuestionnaireController;
 
 import java.io.IOException;
 import java.net.URI;
@@ -12,8 +13,18 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class ML_port implements IML_port {
+    private  String olamaHost;
+    private static Logger log = Logger.getLogger(ML_port.class.getName());
+
+
+    public ML_port(String host) {
+        this.olamaHost = host;
+        log.info("OLAMA HOST is" + olamaHost);
+    }
+
     private static Map<String, String> parseJson(String jsonStr) {
         Map<String, String> result = new LinkedHashMap<>();
 
@@ -70,6 +81,7 @@ public class ML_port implements IML_port {
         return result;
     }
 
+
     private static String stripQuotes(String str) {
         if (str.startsWith("\"") && str.endsWith("\"")) {
             return str.substring(1, str.length() - 1);
@@ -92,9 +104,10 @@ public class ML_port implements IML_port {
                 tags_name_list +
                 "Extract at least two tags from the answer and respond with nothing but the tags, separated by commas.\"}";
 
+
         HttpRequest request = HttpRequest.newBuilder()
                 .POST(HttpRequest.BodyPublishers.ofString(requestBody))
-                .uri(URI.create("http://localhost:11434/api/generate"))
+                .uri(URI.create(olamaHost))
                 .header("Content-Type", "application/json")
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient()
@@ -117,7 +130,6 @@ public class ML_port implements IML_port {
                 }
             }
         }
-        System.out.println(answer_tags);
         return answer_tags;
     }
 }

@@ -12,14 +12,14 @@ public class UserManager
 
     public AUser register(String username, String password) throws Exception
     {
-        if (m_user_repository.findUser(username, password) == null)
+        if (m_user_repository.findUser(username) == null)
             return m_user_repository.createUser(username, password);
         else
             throw new Exception("User already exists");
     }
 
     public AUser authorize(String username, String password) throws Exception {
-        return m_user_repository.findUser(username, password);
+        return m_user_repository.findUser(username);
     }
 
     public void delete(Long Id) throws Exception {

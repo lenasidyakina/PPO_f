@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-class RecManagerTest2 {
+class RecManagerTest {
 
     @Mock
     IML_port iml_port;
@@ -27,7 +27,7 @@ class RecManagerTest2 {
     @Mock
     IReqCacheRepository req_cache_repository;
 
-    private static Logger log = Logger.getLogger(RecManagerTest2.class.getName());
+    private static Logger log = Logger.getLogger(RecManagerTest.class.getName());
 
 
     @Test

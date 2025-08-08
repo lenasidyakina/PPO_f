@@ -7,17 +7,17 @@ public class AQuestion {
     Long id;
     String question;
     List<ATag> tags;
-    boolean kind;
+    boolean is_extended;
 
     public AQuestion(Long id, String question, List<ATag> tags, boolean kind) {
         this.id = id;
         this.question = question;
         this.tags = tags;
-        this.kind = kind;
+        this.is_extended = kind;
     }
 
-    public boolean getKind() {
-        return kind;
+    public boolean getIs_extended() {
+        return is_extended;
     }
 
     public Long getId() {
