@@ -6,6 +6,8 @@ import ru.bmstu.iu7.impl.ModelFactory;
 import ru.bmstu.iu7.impl.SpringUserRepository;
 import ru.bmstu.iu7.impl.model.User;
 
+import java.util.List;
+
 //@Component
 public class UserRepository implements IUserRepository {
 
@@ -43,5 +45,10 @@ public class UserRepository implements IUserRepository {
     {
         m_springUserRepository.save(ModelFactory.AUser2User(user));
         return null;
+    }
+
+    @Override
+    public List<AUser> findAll() {
+        return ModelFactory.Users2AUsers(m_springUserRepository.findAll());
     }
 }

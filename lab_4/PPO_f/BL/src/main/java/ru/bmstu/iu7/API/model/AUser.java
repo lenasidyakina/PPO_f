@@ -30,6 +30,11 @@ public class AUser
         this.role = role;
     }
 
+    @Override
+    public boolean equals( Object o ) {
+        return  id.equals(((AUser)o).id) && name.equals(((AUser)o).name) && age == ((AUser)o).age && gender == ((AUser)o).gender && password.equals(((AUser)o).password) && role.equals(((AUser)o).role);
+    }
+
     public Long getId() {
         return id;
     }

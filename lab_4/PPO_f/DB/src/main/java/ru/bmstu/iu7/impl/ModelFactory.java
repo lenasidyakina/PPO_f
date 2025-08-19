@@ -113,6 +113,15 @@ public class ModelFactory {
         return ans;
     }
 
+    public static List<AUser> Users2AUsers(List<User> users)
+    {
+        List<AUser> ans = new ArrayList<>();
+        for (User user : users) {
+            ans.add(User2AUser(user));
+        }
+        return ans;
+    }
+
     public static AReqCache ReqCache2AReqCache(ReqCache reqCache)
     {
         if (reqCache == null)
